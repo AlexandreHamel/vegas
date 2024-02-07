@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceController extends Controller
 {
@@ -30,16 +31,26 @@ class PlaceController extends Controller
             'longitude' => 'required',
             'description' => 'required',
             'extras' => 'required',
-            'picture' => 'required',
         ]);
 
-        $place = Place::create($request->all());
+        $filename = "";
+        if ($request->hasFile('picture')) {
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            $filenameWithoutExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            $filename = $filenameWithoutExt . '_' . time() . '.' . $extension;
+            $path = $request->file('picture')->storeAs('public/uploads', $filename);
+        } else {
+            $filename = Null;
+        }
+
+        $place = Place::create(array_merge($request->all(), ['picture' => $filename]));
 
         return response()->json([
             'status' => 'Success',
             'message' => 'Place created successfully',
             'data' => $place,
-        ], 201);
+        ]);
     }
 
     /**
@@ -62,10 +73,25 @@ class PlaceController extends Controller
             'longitude' => 'required',
             'description' => 'required',
             'extras' => 'required',
-            'picture' => 'required',
         ]);
 
-        $place->update($request->all());
+        $filename = "";
+        if ($request->hasFile('picture')) {
+
+            if ($place->picture) {
+                Storage::delete('public/uploads/' . $place->picture);
+            }
+
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            $filenameWithoutExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            $filename = $filenameWithoutExt . '_' . time() . '.' . $extension;
+            $path = $request->file('picture')->storeAs('public/uploads', $filename);
+        } else {
+            $filename = Null;
+        }
+
+        $place->update(array_merge($request->all(), ['picture' => $filename]));
 
         return response()->json([
             'status' => 'Success',

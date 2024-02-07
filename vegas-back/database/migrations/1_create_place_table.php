@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('longitude', 11, 8);
             $table->text('description');
             $table->text('extras');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }
