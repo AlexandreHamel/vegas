@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
+import Logout from './logout/logout';
 
 const Navbar = () => {
     return (
@@ -18,15 +19,13 @@ const Navbar = () => {
                 <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li>Admin</li>
                 </NavLink>
-                <NavLink to="" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li>Inscription</li>
                 </NavLink>
-                <NavLink to="" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                <NavLink to="/connexion" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li>Connexion</li>
                 </NavLink>
-                <NavLink to="" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Déconnexion</li>
-                </NavLink>  
+                    <li><Logout /></li> 
             </ul>
         </div>
     );

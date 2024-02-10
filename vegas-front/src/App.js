@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Hotels from './pages/Hotels';
 import Admin from './pages/Admin';
 import Place from './pages/Place';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 
 const App = () => {
@@ -16,7 +18,8 @@ const App = () => {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/place/:id" element={<Place />} />
-          <Route path="/place" element={<Place />} />
+          <Route path="/inscription" element={<RegisterPage />} />
+          <Route path="/connexion" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </div>
