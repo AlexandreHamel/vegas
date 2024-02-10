@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import Card from '../Card';
+import { NavLink } from 'react-router-dom';
 
 const PlaceList = () => {
 
@@ -16,21 +18,13 @@ const PlaceList = () => {
 
     return (
         <div className='container'>
-            <h1>PlaceList</h1>
+            <h2>PlaceList</h2>
             <ul>
                 {places ? (
-                    places.map((place, index) => (
-                        <li key={index}>
-                            <br />
-                            <h2>{place.namePlace}</h2>
-                            <div><img width={120} height={80} src={place.picture} alt="" /></div>
-                            <br />
-                            <p>Adresse: {place.address}</p>
-                            <br />
-                            <p> {place.description}</p>
-                            
-                        </li>
-                        
+                    places.map((place) => (
+                        <NavLink key={place.id} to={`/place/${place.id}`}>
+                            <Card place={place} />
+                        </NavLink>  
                     ))
                 ) : (
                     <li>No places found</li>

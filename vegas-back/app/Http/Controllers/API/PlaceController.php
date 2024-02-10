@@ -14,7 +14,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $place = Place::all();
+        $place = Place::with('category')->get();
 
         return response()->json($place);
     }
@@ -47,7 +47,6 @@ class PlaceController extends Controller
         $place = Place::create(array_merge($request->all(), ['picture' => $filename]));
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Place created successfully',
             'data' => $place,
         ]);
@@ -58,6 +57,8 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
+        $place->load('category');
+
         return response()->json($place);
     }
 
@@ -94,7 +95,6 @@ class PlaceController extends Controller
         $place->update(array_merge($request->all(), ['picture' => $filename]));
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Place updated successfully',
             'data' => $place,
         ]);
