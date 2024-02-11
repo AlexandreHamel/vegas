@@ -1,16 +1,18 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-
+import picVegas from '../styles/images/pic-vegas.jpg'
 
 const Home = () => {
     return (
-        <div>
-            <Navbar />
+        <>
             <div className='container'>
-                <h1>Welcome to Las Vegas</h1>
-
+                <div className='home-container'>
+                    
+                    <img className='img-home' src={ picVegas} alt="" />
+                    <h1>Welcome to Las Vegas</h1>
+                </div>
+                
             </div>
-        </div>
+        </>
     );
 };
 

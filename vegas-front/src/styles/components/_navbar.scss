@@ -1,5 +1,5 @@
 .navigation {
-    background-color: $white;
+    background-color: $black2;
     display: flex;
     justify-content: space-between;
 
@@ -13,14 +13,24 @@
         }
 
         li {
-            color: $black;
+            color: $or;
             transition: 0.2s;
             cursor: pointer;
 
             &:hover {
-                color: $black;
+                color: $white;
             }
         }
+
+        .svg {
+            cursor: pointer;
+            
+            .svg:hover {
+                fill: $or;
+            }
+        }
+
+        
     }
 
     .nav-active {
@@ -30,7 +40,7 @@
             content: "";
             height: 4px;
             width: 0;
-            background: $black;
+            background: $or;
             position: absolute;
             border-radius: 10px;
             bottom: 0px;
@@ -50,4 +60,8 @@
             }
         }
     }
+
 }
+
+
+    

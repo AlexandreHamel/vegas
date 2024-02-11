@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logoVegas from '../styles/images/logo-white.svg'
 
 const Logo = () => {
     return (
         <div className='logo'>
-            <img src={ logo } alt="logo" />
+            <img src={ logoVegas } alt="logo" />
         </div>
     );
 };

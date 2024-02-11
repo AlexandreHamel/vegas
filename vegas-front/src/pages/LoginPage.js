@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BASE_URL } from '../config/config';
-import Navbar from '../components/Navbar';
 import { redirect } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleConnect = async () => {
 
@@ -23,8 +21,8 @@ const LoginPage = () => {
 
                 console.log(response.data);
 
-                localStorage.setItem("token", response.data.data.access_token.token);
-                setIsLoggedIn(true);
+                localStorage.setItem("token", response.data.data.access_token.token);            
+                onLogin();
 
             } else {
                 console.error("Token non trouvé dans la réponse.")
@@ -34,24 +32,23 @@ const LoginPage = () => {
             console.error("Erreur lors de la connexion: ", error.message);
         }
     
-        if (isLoggedIn) {
+        if (onLogin) {
             return redirect("/");
         }
     }
 
     return (
         <>
-            <Navbar />
             <div className="form-container">
                 <div className="form">
                     <h2>Connexion</h2>
 
                     <div>
-                        <label className="label">E-mail</label>
+                        <label className="label">E-mail:</label>
                         <input className="input" value={email} onChange={e => setEmail(e.target.value)} type="email" />
                     </div>
                     <div>
-                        <label className="label">Mot de passe</label>
+                        <label className="label">Mot de passe:</label>
                         <input className="input" value={password} onChange={e => setPassword(e.target.value)} type="password" />
                     </div>
 

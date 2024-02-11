@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Logout from './logout/logout';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
+
     return (
         <div className='navigation'>
             <Logo />
@@ -16,16 +17,24 @@ const Navbar = () => {
                 </NavLink>
             </ul>
             <ul>
-                <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Admin</li>
-                </NavLink>
-                <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Inscription</li>
-                </NavLink>
-                <NavLink to="/connexion" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Connexion</li>
-                </NavLink>
-                    <li><Logout /></li> 
+                {isLoggedIn ? (
+                    <>
+                        <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                            <li>Admin</li>
+                        </NavLink>
+                        <li><Logout /></li>
+                    </>
+
+                ) : (
+                    <>
+                        <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                            <li>Inscription</li>
+                        </NavLink>
+                        <NavLink to="/connexion" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                            <li>Connexion</li>
+                        </NavLink>
+                    </>
+                )}
             </ul>
         </div>
     );

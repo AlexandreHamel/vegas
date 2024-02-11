@@ -29,8 +29,6 @@ const NewPlaceForm = () => {
 
             console.log(response.data);
 
-            // window.location.href = "/admin";
-
         } catch (error) {
             console.error('Erreur lors de l\'envoi des données au backend:', error);
         }

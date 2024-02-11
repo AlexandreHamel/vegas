@@ -1,18 +1,19 @@
 // common
 $black: #000;
+$black2: #23242a;
+$black3: #070707;
 $white: #fff;
 $gray: #28292d;
-$lightgray: #23242a;
-$black2: #23242a;
+$or: #FFD700;
 
 * {
-    // padding: 0;
-    // margin: 0;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: $black;
+    background: $black3;
     color: $white;
     font-family: sans-serif;
 }
