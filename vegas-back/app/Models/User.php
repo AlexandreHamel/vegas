@@ -43,11 +43,6 @@ class User extends Authenticatable implements JWTSubject
         // 'password' => 'hashed',
     ];
 
-    public function place()
-    {
-        return $this->hasMany(Place::class);
-    }
-
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -57,4 +52,5 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
 }

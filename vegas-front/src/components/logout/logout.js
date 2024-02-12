@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 import { BASE_URL } from '../../config/config';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Logout = ({ onLogout }) => {
+
+const Logout = ({onLogout}) => {
+
+    const navigate = useNavigate();
 
     const handleDisconnect = async () => {
         try {
@@ -15,14 +18,13 @@ const Logout = ({ onLogout }) => {
 
             localStorage.removeItem("token");
             onLogout();
+            navigate("/");
+
 
         } catch (error) {
             console.error("Erreur lors de la déconnexion: ", error.message);
         }
 
-        if (onLogout) {
-            return redirect("/");
-        }
     }
 
     return (

@@ -1,4 +1,4 @@
-.form-container{
+.form-container {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -29,9 +29,32 @@
         width: 100%;
         padding: 8px;
         margin-bottom: 6px;
+        margin-top: 5px;
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 12px;
+    }
+
+    select {
+        width: 100%;
+        padding: 0.4rem;
+        font-size: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        background-color: #fff;
+        cursor: pointer;
+        outline: none;
+
+        &:hover {
+            border-color: $or;
+        }
+        &:focus {
+            border-color: $or;
+        }
+
+        option {
+            padding: 0.5rem;
+        }
     }
 
     .button {

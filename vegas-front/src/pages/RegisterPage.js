@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BASE_URL } from '../config/config';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = ({ onLogin }) => {
 
+    const navigate = useNavigate();
     const [nameUser, setNameUser] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,6 +30,7 @@ const RegisterPage = ({ onLogin }) => {
 
                 localStorage.setItem("token", response.data.data.access_token.token);
                 onLogin();
+                navigate("/");
 
             } else {
                 console.error("Token non trouvé dans la réponse.")
