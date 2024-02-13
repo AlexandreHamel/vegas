@@ -8,7 +8,11 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar';
 import Logout from './components/logout/logout';
-
+import PlaceAdd from './components/place/placeAdd';
+import PlaceUpdate from './components/place/placeUpdate';
+import NewCategoryForm from './components/category/categoryAdd';
+import CategoryUpdate from './components/category/categoryUpdate';
+import Restaurants from './pages/Restaurants';
 
 const App = () => {
 
@@ -30,11 +34,16 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
           <Route path="/hotels" element={<Hotels />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/place/:id" element={<Place />} />
           <Route path="/inscription" element={<RegisterPage onLogin={handleLogin} />} />
           <Route path="/connexion" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/deconnexion" element={<Logout onLogout={handleLogout} />} />
+          <Route path="/admin/" element={<Admin />} />
+          <Route path="/admin/place/add" element={<PlaceAdd />} />
+          <Route path="/admin/place/update" element={<PlaceUpdate />} />
+          <Route path="/admin/category/add" element={<NewCategoryForm />} />
+          <Route path="/admin/category/update" element={<CategoryUpdate />} />
         </Routes>
       </BrowserRouter>
     </>

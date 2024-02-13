@@ -1,0 +1,43 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    padding-top: 20px;
+    overflow-y: auto;
+
+    h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+.navbar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #555;
+        }
+    }
+
+    .link {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.navbar li.active {
+    background-color: #666;
+}

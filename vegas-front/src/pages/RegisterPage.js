@@ -43,7 +43,6 @@ const RegisterPage = ({ onLogin }) => {
     return (
         <>
             <div className="form-container">
-
                 <div className="form">
                     <h2>Créer un compte</h2>
                     <div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavbarAdmin from '../NavbarAdmin';
 
 const PlaceAdd = () => {
 
@@ -66,120 +67,123 @@ const PlaceAdd = () => {
     };
 
     return (
-        <div className='form-container'>
-            <div>
-                {Object.keys(validationError).length > 0 && (
-                    <ul>
-                        {Object.entries(validationError).map(
-                            ([key, value]) => (
-                                <li key={key}> {value} </li>
-                            )
-                        )}
-                    </ul>
-                )}
+        <>
+            <NavbarAdmin />
+            <div className='form-container'>
+                <div>
+                    {Object.keys(validationError).length > 0 && (
+                        <ul>
+                            {Object.entries(validationError).map(
+                                ([key, value]) => (
+                                    <li key={key}> {value} </li>
+                                )
+                            )}
+                        </ul>
+                    )}
+                </div>
+
+                <form className='form' onSubmit={addPlace}>
+                    <h2>Ajouter un lieu</h2>
+
+                    <label className='label'>
+                        Nom:
+                        <input
+                            className='input'
+                            type="text"
+                            name='namePlace'
+                            value={namePlace}
+                            onChange={(event) => {
+                                setNamePlace(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Adresse:
+                        <input
+                            className='input'
+                            type="text"
+                            name='address'
+                            value={address}
+                            onChange={(event) => {
+                                setAdress(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Latitude:
+                        <input
+                            className='input'
+                            type="text"
+                            name='latitude'
+                            value={latitude}
+                            onChange={(event) => {
+                                setLatitude(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Longitude:
+                        <input
+                            className='input'
+                            type="text"
+                            name='longitude'
+                            value={longitude}
+                            onChange={(event) => {
+                                setLongitude(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Description:
+                        <textarea
+                            cols="30"
+                            rows="6"
+                            className='input'
+                            name="description"
+                            value={description}
+                            onChange={(event) => {
+                                setDescription(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Extras du lieu:
+                        <textarea
+                            cols="30"
+                            rows="4"
+                            className='input'
+                            name="extras"
+                            value={extras}
+                            onChange={(event) => {
+                                setExtras(event.target.value)
+                            }}
+                        />
+                    </label>
+                    <label className='label'>
+                        Sélectionner un fichier:
+                        <input
+                            className='input'
+                            type="file"
+                            name="picture"
+                            onChange={handlePicture}
+                        />
+                    </label>
+                    <label className='label'>Catégorie:</label>
+                    <select onChange={handleCategory} >
+                        <option>Choisissez une catégorie</option>
+                        {categories.map(category => (
+                            <option
+                                key={category.id}
+                                value={category.id}>
+                                {category.nameCategory}
+                            </option>
+                        ))}
+                    </select>
+
+                    <button className='button' type="submit">Soumettre</button>
+                </form>
             </div>
-
-            <form className='form' onSubmit={addPlace}>
-                <h2>Ajouter un lieu</h2>
-
-                <label className='label'>
-                    Nom:
-                    <input
-                        className='input'
-                        type="text"
-                        name='namePlace'
-                        value={namePlace}
-                        onChange={(event) => {
-                            setNamePlace(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Adresse:
-                    <input
-                        className='input'
-                        type="text"
-                        name='address'
-                        value={address}
-                        onChange={(event) => {
-                            setAdress(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Latitude:
-                    <input
-                        className='input'
-                        type="text"
-                        name='latitude'
-                        value={latitude}
-                        onChange={(event) => {
-                            setLatitude(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Longitude:
-                    <input
-                        className='input'
-                        type="text"
-                        name='longitude'
-                        value={longitude}
-                        onChange={(event) => {
-                            setLongitude(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Description:
-                    <textarea
-                        cols="30"
-                        rows="6"
-                        className='input'
-                        name="description"
-                        value={description}
-                        onChange={(event) => {
-                            setDescription(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Extras du lieu:
-                    <textarea
-                        cols="30"
-                        rows="4"
-                        className='input'
-                        name="extras"
-                        value={extras}
-                        onChange={(event) => {
-                            setExtras(event.target.value)
-                        }}
-                    />
-                </label>
-                <label className='label'>
-                    Sélectionner un fichier:
-                    <input
-                        className='input'
-                        type="file"
-                        name="picture"
-                        onChange={handlePicture}
-                    />
-                </label>
-                <label className='label'>Catégorie:</label>
-                <select onChange={handleCategory} >
-                    <option>Choisissez une catégorie</option>
-                    {categories.map(category => (
-                                                    <option
-                                                        key={category.id}
-                                                        value={category.id}>
-                                                        {category.nameCategory}
-                                                    </option>
-                                                ))}
-                </select>
-
-                <button className='button' type="submit">Soumettre</button>
-            </form>
-        </div>
+        </>
     );
 };
 

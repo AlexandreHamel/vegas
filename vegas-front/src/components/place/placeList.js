@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from '../Card';
 import { NavLink } from 'react-router-dom';
 
-const PlaceList = () => {
+const PlaceList = ({ categoryId }) => {
 
     const [places, setPlaces] = useState([]);
 
@@ -15,6 +15,8 @@ const PlaceList = () => {
                 console.log(response.data);
             });
     }, []);
+
+    
 
     return (
         <div className='container'>

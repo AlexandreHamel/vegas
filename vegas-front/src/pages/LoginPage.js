@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BASE_URL } from '../config/config';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ onLogin }) => {
 
@@ -33,10 +33,7 @@ const LoginPage = ({ onLogin }) => {
         } catch (error) {
             console.error("Erreur lors de la connexion: ", error.message);
         }
-    
-        if (onLogin) {
-            return redirect("/");
-        }
+
     }
 
     return (
