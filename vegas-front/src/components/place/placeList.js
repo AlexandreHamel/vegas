@@ -8,25 +8,32 @@ const PlaceList = ({ categoryId }) => {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        axios
-            .get("http://127.0.0.1:8000/api/place")
-            .then((response) => {
-                setPlaces(response.data)
+        const fetchPlaces = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/place');
+                setPlaces(response.data);
                 console.log(response.data);
-            });
+            } catch (error) {
+                console.error('Erreur lors de la récupération des lieux:', error);
+            }
+        };
+
+        fetchPlaces();
     }, []);
 
-    
+    const filteredPlaces = categoryId ? places.filter(
+        place => place.category_id === categoryId
+        ) : places;
 
     return (
         <div className='container'>
             <h2>PlaceList</h2>
             <ul>
                 {places ? (
-                    places.map((place) => (
+                    filteredPlaces.map((place) => (
                         <NavLink key={place.id} to={`/place/${place.id}`}>
                             <Card place={place} />
-                        </NavLink>  
+                        </NavLink>
                     ))
                 ) : (
                     <li>No places found</li>

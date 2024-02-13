@@ -13,6 +13,7 @@ import PlaceUpdate from './components/place/placeUpdate';
 import NewCategoryForm from './components/category/categoryAdd';
 import CategoryUpdate from './components/category/categoryUpdate';
 import Restaurants from './pages/Restaurants';
+import Shows from './pages/Shows';
 
 const App = () => {
 
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="*" element={<Home />} />
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/restaurants" element={<Restaurants />} />
+          <Route path="/spectacles" element={<Shows />} />          
           <Route path="/place/:id" element={<Place />} />
           <Route path="/inscription" element={<RegisterPage onLogin={handleLogin} />} />
           <Route path="/connexion" element={<LoginPage onLogin={handleLogin} />} />

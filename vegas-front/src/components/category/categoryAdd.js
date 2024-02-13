@@ -15,6 +15,7 @@ const NewCategoryForm = () => {
             const response = await axios.post(`http://127.0.0.1:8000/api/category`, formData)
 
             console.log(response.data);
+
         } catch (error) {
             console.error('Erreur lors de l\'envoi des données au backend:', error);
         }

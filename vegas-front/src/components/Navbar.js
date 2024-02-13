@@ -18,6 +18,9 @@ const Navbar = ({ isLoggedIn }) => {
                 <NavLink to="/restaurants" className={(nav) => (nav.isActive ? "nav-active" : "")} >
                     <li>Restaurants</li>
                 </NavLink>
+                <NavLink to="/spectacles" className={(nav) => (nav.isActive ? "nav-active" : "")} >
+                    <li>Spectacles</li>
+                </NavLink>
                 <li><Logout /></li>
             </ul>
             <ul>

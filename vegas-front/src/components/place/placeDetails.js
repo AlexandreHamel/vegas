@@ -30,6 +30,7 @@ const PlaceDetails = () => {
                     <p>Adresse: {place.address}</p>
                 </address>
                 <p> {place.description}</p>
+                <p> {place.extras} </p>
             </div>
 
         </div>
