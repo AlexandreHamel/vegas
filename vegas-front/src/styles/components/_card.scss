@@ -1,0 +1,36 @@
+.card {
+    width: 20rem;
+    height: 38rem;
+    margin: 10px auto 30px auto;
+    background-color: $white;
+    transition: 0.25s;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    img {
+        height: 20rem;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card-bottom {
+        padding: 20px;
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            margin: 40px 0;
+
+            p {
+                margin: 20px;
+            }
+        } 
+    }
+
+    
+}

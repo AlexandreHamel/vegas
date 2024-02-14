@@ -27,8 +27,7 @@ const PlaceList = ({ categoryId }) => {
 
     return (
         <div className='container'>
-            <h2>PlaceList</h2>
-            <ul>
+            <div className='placelist'>
                 {places ? (
                     filteredPlaces.map((place) => (
                         <NavLink key={place.id} to={`/place/${place.id}`}>
@@ -36,9 +35,9 @@ const PlaceList = ({ categoryId }) => {
                         </NavLink>
                     ))
                 ) : (
-                    <li>No places found</li>
+                    <p>No places found</p>
                 )}
-            </ul>
+            </div>
         </div>
     );
 };

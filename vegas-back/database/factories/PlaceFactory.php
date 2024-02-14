@@ -17,7 +17,7 @@ class PlaceFactory extends Factory
     public function definition(): array
     {
         return [
-            'namePlace' => $this->faker->name(),
+            'namePlace' => $this->faker->word(),
             'address' => $this->faker->streetAddress(),
             'latitude' => $this->faker->latitude($min = -90, $max = 90),
             'longitude' => $this->faker->longitude($min = -180, $max = 180),
