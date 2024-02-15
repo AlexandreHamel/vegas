@@ -14,6 +14,8 @@ import NewCategoryForm from './components/category/categoryAdd';
 import CategoryUpdate from './components/category/categoryUpdate';
 import Restaurants from './pages/Restaurants';
 import Shows from './pages/Shows';
+import PLaceListAdmin from './components/place/placeListAdmin';
+import CategoryListAdmin from './components/category/categoryListAdmin';
 
 const App = () => {
 
@@ -25,6 +27,7 @@ const App = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    console.log('click');
   }
 
   return (
@@ -42,10 +45,12 @@ const App = () => {
           <Route path="/connexion" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/deconnexion" element={<Logout onLogout={handleLogout} />} />
           <Route path="/admin/" element={<Admin />} />
+          <Route path="/admin/place/list" element={<PLaceListAdmin />} />
           <Route path="/admin/place/add" element={<PlaceAdd />} />
-          <Route path="/admin/place/update" element={<PlaceUpdate />} />
+          <Route path="/admin/place/update/:id" element={<PlaceUpdate />} />
+          <Route path="/admin/category/list" element={<CategoryListAdmin />} />
           <Route path="/admin/category/add" element={<NewCategoryForm />} />
-          <Route path="/admin/category/update" element={<CategoryUpdate />} />
+          <Route path="/admin/category/update/:id" element={<CategoryUpdate />} />
         </Routes>
       </BrowserRouter>
     </>

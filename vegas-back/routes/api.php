@@ -22,13 +22,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("place", PlaceController::class);
-Route::apiResource("category", CategoryController::class);
+// Route::apiResource("place", PlaceController::class);
+// Route::apiResource("category", CategoryController::class);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/currentuser', [UserController::class, 'currentUser']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']); 
+});
+
+Route::controller(PlaceController::class)->group(function(){
+    Route::get('place','index');
+    Route::get('place/{place}', 'show');
+    Route::post('place','store')->middleware('auth:api');
+    Route::put('place/{place}', 'update')->middleware('auth:api');
+    Route::delete('place/{place}', 'destroy')->middleware('auth:api');
+});
+
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('category','index');
+    Route::get('category/{category}', 'show');
+    Route::post('category','store')->middleware('auth:api');
+    Route::put('category/{category}', 'update')->middleware('auth:api');
+    Route::delete('category/{category}', 'destroy')->middleware('auth:api');
 });

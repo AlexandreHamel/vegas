@@ -12,7 +12,12 @@ const NewCategoryForm = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`http://127.0.0.1:8000/api/category`, formData)
+            const response = await axios.post(`http://127.0.0.1:8000/api/category`, formData, 
+            {
+                headers: {
+                    Authorization: "Bearer" + localStorage.getItem("token"),
+                }
+            })
 
             console.log(response.data);
 
@@ -25,9 +30,9 @@ const NewCategoryForm = () => {
         <>
             <NavbarAdmin />
             <div className='form-container'>
+                <p> </p>
                 <form className='form' onSubmit={handleSubmit}>
                     <h2>Ajouter une catégorie</h2>
-
                     <label className='label'>
                         Catégorie:
                         <input

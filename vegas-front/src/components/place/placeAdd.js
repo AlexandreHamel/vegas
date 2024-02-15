@@ -8,7 +8,7 @@ const PlaceAdd = () => {
     const navigate = useNavigate();
 
     const [namePlace, setNamePlace] = useState("");
-    const [address, setAdress] = useState("");
+    const [address, setAddress] = useState("");
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
     const [description, setDescription] = useState("");
@@ -17,14 +17,6 @@ const PlaceAdd = () => {
     const [category_id, setCategoryId] = useState("");
     const [validationError, setValidationError] = useState({});
     const [categories, setCategories] = useState([]);
-
-    const handlePicture = (event) => {
-        setPicture(event.target.files[0]);
-    }
-
-    const handleCategory = (event) => {
-        setCategoryId(event.target.value);
-    }
 
     useEffect(() => {
         getCategory()
@@ -36,6 +28,14 @@ const PlaceAdd = () => {
             .then(response => {
                 setCategories(response.data)
             })
+    };
+
+    const handlePicture = (event) => {
+        setPicture(event.target.files[0]);
+    }
+
+    const handleCategory = (event) => {
+        setCategoryId(event.target.value);
     }
 
     const addPlace = async (event) => {
@@ -57,7 +57,11 @@ const PlaceAdd = () => {
         }
 
         await axios
-            .post(`http://127.0.0.1:8000/api/place`, formData)
+            .post(`http://127.0.0.1:8000/api/place`, formData, {
+                headers: {
+                    Authorization: "Bearer" + localStorage.getItem("token"),
+                }
+            })
             .then(navigate("/admin"))
             .catch(({ response }) => {
                 if (response.status !== 200) {
@@ -105,7 +109,7 @@ const PlaceAdd = () => {
                             name='address'
                             value={address}
                             onChange={(event) => {
-                                setAdress(event.target.value)
+                                setAddress(event.target.value)
                             }}
                         />
                     </label>

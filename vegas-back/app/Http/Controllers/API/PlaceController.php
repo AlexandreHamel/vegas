@@ -25,12 +25,13 @@ class PlaceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namePlace' => 'required|max:190',
-            'address' => 'required|max:190',
+            'namePlace' => 'required|string',
+            'address' => 'required|string',
             'latitude' => 'required',
             'longitude' => 'required',
-            'description' => 'required',
-            'extras' => 'required',
+            'description' => 'required|string',
+            'extras' => 'required|string',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         $filename = "";
@@ -74,6 +75,7 @@ class PlaceController extends Controller
             'longitude' => 'required',
             'description' => 'required',
             'extras' => 'required',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         $filename = "";
@@ -89,7 +91,7 @@ class PlaceController extends Controller
             $filename = $filenameWithoutExt . '_' . time() . '.' . $extension;
             $path = $request->file('picture')->storeAs('public/uploads', $filename);
         } else {
-            $filename = Null;
+            $filename = $place->picture;
         }
 
         $place->update(array_merge($request->all(), ['picture' => $filename]));

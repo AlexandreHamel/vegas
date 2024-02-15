@@ -12,7 +12,9 @@ const PlaceList = ({ categoryId }) => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/place');
                 setPlaces(response.data);
+
                 console.log(response.data);
+                
             } catch (error) {
                 console.error('Erreur lors de la récupération des lieux:', error);
             }

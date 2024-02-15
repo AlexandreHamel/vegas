@@ -3,8 +3,7 @@ import React from 'react';
 import { BASE_URL } from '../../config/config';
 import { useNavigate } from 'react-router-dom';
 
-
-const Logout = ({onLogout}) => {
+const Logout = ({ onLogout }) => {
 
     const navigate = useNavigate();
 
@@ -17,14 +16,12 @@ const Logout = ({onLogout}) => {
             });
 
             localStorage.removeItem("token");
-            onLogout();
+            // onLogout();
             navigate("/");
-
 
         } catch (error) {
             console.error("Erreur lors de la déconnexion: ", error.message);
         }
-
     }
 
     return (
