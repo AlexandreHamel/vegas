@@ -25,7 +25,7 @@ const CategoryUpdate = () => {
 
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+    }, []);
 
     const updateCategory = async (event) => {
         event.preventDefault();

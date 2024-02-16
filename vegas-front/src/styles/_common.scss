@@ -36,3 +36,32 @@ li {
     margin: auto;
     padding: 10px;
 }
+ 
+.noaccess {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+    h2 {
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    img {
+        width: 500px;
+    }
+
+    p {
+        margin-top: 20px;
+
+        a {
+            color: $or;
+
+            &:hover {
+                color: green;
+            }
+        }
+    }
+}

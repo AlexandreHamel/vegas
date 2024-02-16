@@ -22,15 +22,19 @@
             }
         }
 
-        .svg {
-            cursor: pointer;
-            
-            .svg:hover {
-                fill: $or;
+        .logout {
+            margin-left: 20px;
+
+            .svg {
+                cursor: pointer;
+                fill: #FFD700;
+
+                &:hover {
+                    fill: #fff;
+                }
             }
         }
 
-        
     }
 
     .nav-active {
@@ -48,11 +52,13 @@
             transform: translateX(-50%);
             -webkit-animation: anim 0.3s ease forwards;
             animation: anim 0.6s ease forwards;
+
             @-webkit-keyframes anim {
                 to {
                     width: 100%;
                 }
             }
+
             @keyframes anim {
                 to {
                     width: 100%;
@@ -62,6 +68,3 @@
     }
 
 }
-
-
-    

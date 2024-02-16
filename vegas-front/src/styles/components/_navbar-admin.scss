@@ -13,29 +13,31 @@
         text-align: center;
         color: #fff;
     }
-}
 
-.navbar ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
 
-    li {
-        padding: 10px 20px;
-        font-size: 18px;
-        color: #fff;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: #555;
+        li {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: #555;
+            }
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
     }
 
-    .link {
-        text-decoration: none;
-        color: inherit;
-    }
 }
 
 .navbar li.active {

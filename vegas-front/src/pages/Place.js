@@ -1,11 +1,13 @@
 import React from 'react';
 import PlaceDetails from '../components/place/placeDetails';
+import Navbar from '../components/Navbar';
 
 const Place = () => {
     return (
-        <div>
+        <>
+            <Navbar />
             <PlaceDetails />
-        </div>
+        </>
     );
 };
 

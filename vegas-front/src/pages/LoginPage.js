@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { BASE_URL } from '../config/config';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const LoginPage = ({ onLogin }) => {
 
@@ -37,6 +38,7 @@ const LoginPage = ({ onLogin }) => {
 
     return (
         <>
+            <Navbar />
             <div className="form-container">
                 <div className="form">
                     <h2>Connexion</h2>

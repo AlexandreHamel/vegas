@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import NavbarAdmin from '../NavbarAdmin';
+import { useNavigate } from 'react-router-dom';
 
 const NewCategoryForm = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         nameCategory: ''
@@ -20,6 +23,7 @@ const NewCategoryForm = () => {
             })
 
             console.log(response.data);
+            navigate("/admin/category/list");
 
         } catch (error) {
             console.error('Erreur lors de l\'envoi des données au backend:', error);

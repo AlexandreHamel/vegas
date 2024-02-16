@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from './pages/Home';
 import Hotels from './pages/Hotels';
 import Admin from './pages/Admin';
@@ -16,6 +16,8 @@ import Restaurants from './pages/Restaurants';
 import Shows from './pages/Shows';
 import PLaceListAdmin from './components/place/placeListAdmin';
 import CategoryListAdmin from './components/category/categoryListAdmin';
+import Noaccess from './pages/Noaccess';
+import auth from './services/auth/token';
 
 const App = () => {
 
@@ -27,13 +29,12 @@ const App = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    console.log('click');
   }
 
   return (
     <>
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
@@ -44,13 +45,22 @@ const App = () => {
           <Route path="/inscription" element={<RegisterPage onLogin={handleLogin} />} />
           <Route path="/connexion" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/deconnexion" element={<Logout onLogout={handleLogout} />} />
-          <Route path="/admin/" element={<Admin />} />
-          <Route path="/admin/place/list" element={<PLaceListAdmin />} />
-          <Route path="/admin/place/add" element={<PlaceAdd />} />
-          <Route path="/admin/place/update/:id" element={<PlaceUpdate />} />
-          <Route path="/admin/category/list" element={<CategoryListAdmin />} />
-          <Route path="/admin/category/add" element={<NewCategoryForm />} />
-          <Route path="/admin/category/update/:id" element={<CategoryUpdate />} />
+          <Route path="/admin/" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <Admin /> : <Noaccess /> : <Navigate to="/inscription"/> } />
+          <Route path="/admin/place/list" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <PLaceListAdmin /> : <Noaccess /> : <Navigate to="/inscription" />} />
+          <Route path="/admin/place/add" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <PlaceAdd /> : <Noaccess /> : <Navigate to="/inscription" /> } />
+          <Route path="/admin/place/update/:id" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <PlaceUpdate /> : <Noaccess /> : <Navigate to="/inscription" /> } />
+          <Route path="/admin/category/list"
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <CategoryListAdmin /> : <Noaccess /> : <Navigate to="/inscription" /> } />
+          <Route path="/admin/category/add" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <NewCategoryForm /> : <Noaccess /> : <Navigate to="/inscription" /> } />
+          <Route path="/admin/category/update/:id" 
+            element={ auth.getExpiryTime() ? auth.loggedAndAdmin() ? <CategoryUpdate />: <Noaccess /> : <Navigate to="/inscription" /> } />
+          <Route path="/noaccess" element={<Noaccess />} />
+
         </Routes>
       </BrowserRouter>
     </>

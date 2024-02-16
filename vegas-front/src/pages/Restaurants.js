@@ -1,5 +1,6 @@
 import React from 'react';
 import PlaceList from '../components/place/placeList';
+import Navbar from '../components/Navbar';
 
 const Restaurants = () => {
 
@@ -7,6 +8,7 @@ const Restaurants = () => {
 
     return (
         <>
+            <Navbar />
             <div className='container'>
                 <h1>Restaurants</h1>
                 <PlaceList categoryId={categoryId} />

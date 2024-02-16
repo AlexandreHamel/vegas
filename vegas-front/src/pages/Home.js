@@ -1,10 +1,12 @@
 import React from 'react';
 import picVegas from '../styles/images/pic-vegas.jpg';
 import LeafletMap from '../components/LeafletMap';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
     return (
         <>
+            <Navbar />
             <div className='container'>
                 <div className='home-container'>
 

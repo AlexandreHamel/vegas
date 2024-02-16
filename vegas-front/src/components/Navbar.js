@@ -2,8 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Logout from './logout/logout';
+import token from '../services/auth/token';
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
+
+    const isLogged = token.getToken();
+    const isAdmin = token.loggedAndAdmin();
+    const nameUser = token.getName();
 
     return (
         <div className='navigation'>
@@ -24,14 +29,14 @@ const Navbar = ({ isLoggedIn }) => {
                 <li><Logout /></li>
             </ul>
             <ul>
-                {isLoggedIn ? (
-                    <>
-                        <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                            <li>Admin</li>
-                        </NavLink>
-                        <li><Logout /></li>
-                    </>
-
+            {isLogged && isAdmin && (
+                    <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                        <li>Admin</li>
+                    </NavLink>
+                )}
+                {isLogged ? (
+                    
+                    <li><Logout /></li>
                 ) : (
                     <>
                         <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>
