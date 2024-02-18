@@ -6,7 +6,6 @@ import Admin from './pages/Admin';
 import Place from './pages/Place';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-import Navbar from './components/Navbar';
 import Logout from './components/logout/logout';
 import PlaceAdd from './components/place/placeAdd';
 import PlaceUpdate from './components/place/placeUpdate';

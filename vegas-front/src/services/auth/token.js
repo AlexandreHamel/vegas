@@ -35,7 +35,7 @@ let getRoles = () => {
   let getName = () => {
     // On teste si il y a un token décodé et si il n'a pas expiré
     if (getExpiryTime()) {
-      return getDecodedToken().nameUser;
+      return getDecodedToken().name;
     } else {
       return false;
     }

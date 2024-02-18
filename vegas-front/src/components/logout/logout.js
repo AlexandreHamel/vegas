@@ -11,13 +11,14 @@ const Logout = ({ onLogout }) => {
         try {
             const token = localStorage.getItem("token");
 
-            await axios.post(`${BASE_URL}/logout`, {
+            const response =  await axios.post(`${BASE_URL}/logout`, {
                 token: token,
             });
 
             localStorage.removeItem("token");
             // onLogout();
             navigate("/");
+            console.log(response.data.meta.message);
 
         } catch (error) {
             console.error("Erreur lors de la déconnexion: ", error.message);

@@ -1,7 +1,8 @@
 import React from 'react';
 import picVegas from '../styles/images/pic-vegas.jpg';
-import LeafletMap from '../components/LeafletMap';
+// import LeafletMap from '../components/LeafletMap';
 import Navbar from '../components/Navbar';
+import PlaceList from '../components/place/placeList';
 
 const Home = () => {
     return (
@@ -12,8 +13,7 @@ const Home = () => {
 
                     <img className='img-home' src={picVegas} alt="" />
                     <h1>Welcome to Las Vegas</h1>
-
-                    <LeafletMap />
+                    <PlaceList />
 
                 </div>
 

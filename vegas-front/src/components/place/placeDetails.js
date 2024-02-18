@@ -1,19 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Detail from '../Detail';
 
 const PlaceDetails = () => {
 
     const { id } = useParams();
     const [place, setPlace] = useState({});
-    
 
     useEffect(() => {
         axios
-            .get(`http://127.0.0.1:8000/api/place/${id}`)
+            .get(`http://127.0.0.1:8000/api/place/${id}`,
+                {
+                    headers: { Accept: "application/json" }
+                }
+            )
             .then((response) => {
                 setPlace(response.data);
+
                 console.log(response.data);
+
             })
             .catch(error => {
                 console.error('Erreur', error);
@@ -21,19 +27,9 @@ const PlaceDetails = () => {
     }, [id]);
 
     return (
-        <div>
-            <div className='container'>
-                <h1> {place.namePlace && place.namePlace.toUpperCase()} </h1>
-                <img src={`http://127.0.0.1:8000/storage/uploads/${place.picture}`} alt={place.picture} />
-                {/* <p> {place.category.nameCategory} </p> */}
-                <address>
-                    <p>Adresse: {place.address}</p>
-                </address>
-                <p> {place.description}</p>
-                <p> {place.extras} </p>
-            </div>
-
-        </div>
+        <>
+            <Detail place={place} />
+        </>
     );
 };
 

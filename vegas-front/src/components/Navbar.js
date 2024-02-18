@@ -26,17 +26,23 @@ const Navbar = () => {
                 <NavLink to="/spectacles" className={(nav) => (nav.isActive ? "nav-active" : "")} >
                     <li>Spectacles</li>
                 </NavLink>
-                <li><Logout /></li>
+                {/* <li><Logout /></li> */}
             </ul>
             <ul>
-            {isLogged && isAdmin && (
+                {isLogged && isAdmin && (
                     <NavLink to="/admin" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                         <li>Admin</li>
                     </NavLink>
                 )}
                 {isLogged ? (
-                    
-                    <li><Logout /></li>
+                    <>
+                        <div className='logout-content'>
+                            <li>Bonjour {nameUser} </li>
+                            <li><Logout /></li>
+                        </div>
+
+                    </>
+
                 ) : (
                     <>
                         <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>

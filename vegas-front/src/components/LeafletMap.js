@@ -2,9 +2,16 @@ import React from 'react';
 import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const LeafletMap = () => {
+const LeafletMap = ( { place } ) => {
 
-    const position = [36.114613054289364, -115.17397499478925]
+    const lat = place.latitude;
+    const long = place.longitude
+
+    const position = [36.11589001, -115.17322117]
+
+    console.log(lat);
+    console.log(long);
+
 
     return (
         <div id='map'>
@@ -19,7 +26,7 @@ const LeafletMap = () => {
                 />
                 <Marker position={ position }>
                     <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
+                        {place.namePlace} <br /> {place.address}
                     </Popup>
                 </Marker>
             </MapContainer>
