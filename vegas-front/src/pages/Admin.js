@@ -3,9 +3,9 @@ import NavbarAdmin from '../components/NavbarAdmin';
 
 const Admin = () => {
     return (
-        <>
+        <div className="background">
             <NavbarAdmin />        
-        </>
+        </div>
     );
 };
 

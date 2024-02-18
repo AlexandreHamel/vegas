@@ -39,7 +39,7 @@ const PLaceListAdmin = () => {
         <>
             <NavbarAdmin />
             <div className="container">
-                <h2>Place List Admin</h2>
+                <h2>Liste des lieux</h2>
                 <div className='table-container'>
                     <table className='table'>
                         <thead>

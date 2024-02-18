@@ -6,6 +6,36 @@
     .img-home {
         width: 600px;
     }
+
+    h1 {
+        margin: 2rem;
+        color: $or;
+    }
+
+    h2 {
+        margin: 1rem;
+    }
+
+    h3 {
+        margin-top: 3rem;
+    }
+
+    .home-link {
+        display: flex;
+        justify-content: space-evenly;
+        width: 800px;
+        margin: 4rem 0 1rem 0;
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $white;
+            
+            &:hover {
+                color: $or;
+            }
+        }
+    }
 }
 
 #map {

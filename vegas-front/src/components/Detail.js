@@ -24,10 +24,11 @@ const Detail = ( { place } ) => {
                         <p> {place.description}</p>
                         <p> {place.extras} </p>
                         <address>
-                            <p>Address: {place.address}</p>
+                            <h4>Adresse : </h4>
+                            <p> {place.address}</p>
                         </address>
-                        <p> {place.latitude} </p>
-                        <p> {place.longitude} </p>
+                        <h4>Coordonnées GPS: </h4>
+                        <p> {place.latitude}, {place.longitude} </p>
                     </div>
                 </div>
                 <div className="detail-map">

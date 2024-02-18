@@ -37,12 +37,10 @@ const Navbar = () => {
                 {isLogged ? (
                     <>
                         <div className='logout-content'>
-                            <li>Bonjour {nameUser} </li>
+                            <li>Bienvenue {nameUser} </li>
                             <li><Logout /></li>
                         </div>
-
                     </>
-
                 ) : (
                     <>
                         <NavLink to="/inscription" className={(nav) => (nav.isActive ? "nav-active" : "")}>

@@ -102,7 +102,7 @@ const PlaceUpdate = () => {
             <div className='form-container'>
 
                 <form className='form' onSubmit={updatePlace}>
-                    <h2>Place Update</h2>
+                    <h2>Modifier un lieu</h2>
 
                     <label className='label'>
                         Nom:

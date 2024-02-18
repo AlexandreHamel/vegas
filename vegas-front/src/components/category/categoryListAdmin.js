@@ -37,7 +37,7 @@ const CategoryListAdmin = () => {
         <>
             <NavbarAdmin />
             <div className="container">
-                <h2>Category List Admin</h2>
+                <h2>Liste des catégories</h2>
                 <div className="table-container">
                     <table className="table ">
                         <thead>
